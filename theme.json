@@ -1,8 +1,38 @@
 {
 	"version": 2,
+	"templateParts": [
+		{
+			"name": "header",
+			"title": "Header",
+			"area": "header"
+		},
+		{
+			"name": "footer",
+			"title": "Footer",
+			"area": "footer"
+		}
+	],
+	"customTemplates": [
+		{
+			"name": "blank",
+			"title": "Blank Canvas",
+			"postTypes": [
+				"page",
+				"post"
+			]
+		},
+		{
+			"name": "template-no-title",
+			"title": "Pagina zonder title",
+			"postTypes": [
+				"page"
+			]
+		}
+	],
 	"settings": {
 		"color": {
 			"defaultGradients": false,
+			"defaultDuotone": false,
 			"defaultPalette": false,
 			"background": true,
 			"text": true,
@@ -24,9 +54,32 @@
 		},
 		"typography": {
 			"fontFamilies": [
-				{ "name": "System Font", 	  "slug": "system-font",      "fontFamily": "-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,Oxygen-Sans,Ubuntu,Cantarell,\"Helvetica Neue\",sans-serif" },
-				{ "name": "Source Serif Pro", "slug": "source-serif-pro", "fontFamily": "\"Source Serif Pro\", serif" },
-				{ "name": "Inter",            "slug": "inter",            "fontFamily": "\"Inter\", sans-serif" }
+				{
+					"name": "System Font",
+					"slug": "system-font",
+					"fontFamily": "-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,Oxygen-Sans,Ubuntu,Cantarell,\"Helvetica Neue\",sans-serif"
+				},
+				{
+					"name": "Source Serif Pro",
+					"slug": "source-serif-pro",
+					"fontFamily": "\"Source Serif Pro\", serif",
+					"fontFace": [
+						{
+							"fontFamily": "Source Serif Pro",
+							"fontWeight": "200 900",
+							"fontStyle": "normal",
+							"fontStretch": "normal",
+							"src": [ "file:./assets/fonts/source-serif-pro/SourceSerif4Variable-Roman.ttf.woff2" ]
+						},
+						{
+							"fontFamily": "Source Serif Pro",
+							"fontWeight": "200 900",
+							"fontStyle": "italic",
+							"fontStretch": "normal",
+							"src": [ "file:./assets/fonts/source-serif-pro/SourceSerif4Variable-Italic.ttf.woff2" ]
+						}
+					]
+				}
 			],
 			"fontSizes": [
 				{ "name": "Small",    "slug": "small",    "size": "1rem" },
@@ -65,6 +118,8 @@
 				"mainSize": "68rem"
 			},
 			"spacing": {
+				"outer-site-horizontal": "clamp(1.5rem, 7vw, 5rem)",
+
 				"block-gap": "clamp(1.5rem, 4vw, 2.5rem)",
 				"block-inner": "clamp(1.5rem, 6vw, 3.75rem)",
 				"site-horizontal": "clamp(1.5rem, 7vw, 5rem)",
@@ -213,34 +268,5 @@
 				}
 			}
 		}
-	},
-	"templateParts": [
-		{
-			"name": "header",
-			"title": "Header",
-			"area": "header"
-		},
-		{
-			"name": "footer",
-			"title": "Footer",
-			"area": "footer"
-		}
-	],
-	"customTemplates": [
-		{
-			"name": "blank",
-			"title": "Blank",
-			"postTypes": [
-				"page",
-				"post"
-			]
-		},
-		{
-			"name": "template-no-title",
-			"title": "Pagina zonder title",
-			"postTypes": [
-				"page"
-			]
-		}
-	]
+	}
 }
