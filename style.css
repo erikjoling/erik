@@ -34,12 +34,70 @@ body {
 /* -------------------------------- BLOCKS -------------------------------- */
 
 
+/*
+ * Correct the spacing of the (Responsive) Navigation Block
+ * We also use some javascript (see theme.js)
+ */
+
+header.wp-block-template-part .wp-block-navigation__responsive-container {
+    padding: 0;
+}
+
+header.wp-block-template-part .wp-block-navigation__responsive-dialog {
+    text-align: right;
+}
+
+header.wp-block-template-part .wp-block-navigation__responsive-container-close {
+    position: relative;
+}
+
+header.wp-block-template-part .wp-block-navigation__responsive-container-content {
+    padding-top: 24px !important;
+}
 
 /* -------------------------------- CONTAINER BLOCKS -------------------------------- */
 
 
 
 /* -------------------------------- ALIGNMENTS -------------------------------- */
+
+/*
+ * Alignment styles.
+ * These rules are temporary, and should not be relied on or
+ * modified too heavily by themes or plugins that build on
+ * Twenty Twenty-Two. These are meant to be a precursor to
+ * a global solution provided by the Block Editor.
+ *
+ * Relevant issues:
+ * https://github.com/WordPress/gutenberg/issues/35607
+ * https://github.com/WordPress/gutenberg/issues/35884
+ */
+
+.wp-site-blocks,
+.wp-site-blocks > .wp-block-group.has-background,
+.wp-site-blocks > .wp-block-cover,
+.wp-site-blocks > .wp-block-template-part,
+.wp-site-blocks > .wp-block-template-part > .wp-block-group.has-background,
+.wp-site-blocks > .wp-block-template-part > .wp-block-cover,
+header.wp-block-template-part .wp-block-navigation__responsive-container, /* Align responsive header menu */
+body > .is-root-container,
+.edit-post-visual-editor__post-title-wrapper {
+    padding-left: var(--wp--custom--spacing--outer-site-horizontal);
+    padding-right: var(--wp--custom--spacing--outer-site-horizontal);
+}
+
+.wp-site-blocks > .wp-block-group.has-background,
+.wp-site-blocks > .wp-block-cover,
+.wp-site-blocks > .wp-block-template-part,
+.wp-site-blocks > .wp-block-template-part > .wp-block-group.has-background,
+.wp-site-blocks > .wp-block-template-part > .wp-block-cover,
+body > .is-root-container > .wp-block-template-part {
+    margin-left: calc(-1 * var(--wp--custom--spacing--outer-site-horizontal)) !important;
+    margin-right: calc(-1 * var(--wp--custom--spacing--outer-site-horizontal)) !important;
+    width: unset;
+}
+
+
 
 
 
