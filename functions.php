@@ -94,5 +94,29 @@ endif;
 add_action( 'wp_enqueue_scripts', 'erik_scripts' );
 
 
+/**
+ * Add Custom CSS to Admin Menu
+ */
+function erik_add_custom_css_to_admin_menu() {
+
+    $link = 'customize.php?autofocus[section]=custom_css';    
+
+    /**
+     * @link https://developer.wordpress.org/reference/functions/add_submenu_page/
+     */
+    add_submenu_page( 
+        'themes.php',
+        'Custom CSS',
+        'Custom CSS',
+        'manage_options',
+        $link,
+        '', 
+        null 
+    );
+}
+
+// Register Custom CSS for admin menu
+add_action( 'admin_menu', 'erik_add_custom_css_to_admin_menu', 11 );
+
 // Add block patterns
 require get_template_directory() . '/inc/block-patterns.php';

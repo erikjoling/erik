@@ -13,7 +13,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: erik
 */
 
-/* -------------------------------- ELEMENTS -------------------------------- */
+/* -------------------------------- GENERAL -------------------------------- */
 
 /*
  * Font smoothing.
@@ -25,41 +25,6 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing: antialiased;
 }
-
-
-
-/* -------------------------------- CUSTOM ELEMENTS -------------------------------- */
-
-
-/* -------------------------------- BLOCKS -------------------------------- */
-
-
-/*
- * Correct the spacing of the (Responsive) Navigation Block
- * We also use some javascript (see theme.js)
- */
-
-header.wp-block-template-part .wp-block-navigation__responsive-container {
-    padding: 0;
-}
-
-header.wp-block-template-part .wp-block-navigation__responsive-dialog {
-    text-align: right;
-}
-
-header.wp-block-template-part .wp-block-navigation__responsive-container-close {
-    position: relative;
-}
-
-header.wp-block-template-part .wp-block-navigation__responsive-container-content {
-    padding-top: 24px !important;
-}
-
-/* -------------------------------- CONTAINER BLOCKS -------------------------------- */
-
-
-
-/* -------------------------------- ALIGNMENTS -------------------------------- */
 
 /*
  * Alignment styles.
@@ -77,9 +42,9 @@ header.wp-block-template-part .wp-block-navigation__responsive-container-content
 .wp-site-blocks > .wp-block-group.has-background,
 .wp-site-blocks > .wp-block-cover,
 .wp-site-blocks > .wp-block-template-part,
-.wp-site-blocks > .wp-block-template-part > .wp-block-group.has-background,
+.wp-site-blocks > .wp-block-template-part > .wp-block-group,
 .wp-site-blocks > .wp-block-template-part > .wp-block-cover,
-header.wp-block-template-part .wp-block-navigation__responsive-container, /* Align responsive header menu */
+main,
 body > .is-root-container,
 .edit-post-visual-editor__post-title-wrapper {
     padding-left: var(--wp--custom--spacing--outer-site-horizontal);
@@ -89,47 +54,69 @@ body > .is-root-container,
 .wp-site-blocks > .wp-block-group.has-background,
 .wp-site-blocks > .wp-block-cover,
 .wp-site-blocks > .wp-block-template-part,
-.wp-site-blocks > .wp-block-template-part > .wp-block-group.has-background,
+.wp-site-blocks > .wp-block-template-part > .wp-block-group,
 .wp-site-blocks > .wp-block-template-part > .wp-block-cover,
+main,
 body > .is-root-container > .wp-block-template-part {
     margin-left: calc(-1 * var(--wp--custom--spacing--outer-site-horizontal)) !important;
     margin-right: calc(-1 * var(--wp--custom--spacing--outer-site-horizontal)) !important;
     width: unset;
 }
 
+/*
+ * Remove the margin-top between site-blocks
+ */
+.wp-site-blocks > * + * {
+    margin-block-start: 0;
+}
+
+/* ------------------------------ HEADER & NAVIGATION ------------------------------ */
 
 
+header.wp-block-template-part > .wp-block-group {
+    padding-top: var(--wp--custom--spacing--header-vertical);
+    padding-bottom: var(--wp--custom--spacing--header-vertical);
+}
 
+/*
+ * Correct the spacing of the (Responsive) Navigation Block
+ * We also use some javascript (see theme.js)
+ */
 
-/* -------------------------------- LAYOUT -------------------------------- */
+header.wp-block-template-part .wp-block-navigation__responsive-container.is-menu-open {
+    padding-left: var(--wp--custom--spacing--outer-site-horizontal);
+    padding-right: var(--wp--custom--spacing--outer-site-horizontal);
+    padding-top: var(--wp--custom--spacing--header-vertical);
+    padding-bottom: var(--wp--custom--spacing--header-vertical);
+    text-align: right;
+}
 
+header.wp-block-template-part .wp-block-navigation__responsive-container-close {
+    position: relative;
+}
 
-
-/* -------------------------------- MOBILE -------------------------------- */
-
-/* Improve spacing for the navigation responsive container */
-.wp-block-navigation__responsive-container.is-menu-open {
-
+header.wp-block-template-part .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content {
+    padding-top: var(--wp--custom--spacing--header-vertical);
 }
 
 /* Mobile version without outer borders */
-@media (max-width: 480px) {
+/* @media (max-width: 480px) {} */
 
+
+/* ----------------------------------- MAIN ----------------------------------- */
+
+main.wp-block-group {
+    padding-top: var(--wp--custom--spacing--main-vertical);
+    padding-bottom: var(--wp--custom--spacing--main-vertical);
 }
 
-/* -------------------------------- TEMPLATES -------------------------------- */
+
+/* ---------------------------------- FOOTER ---------------------------------- */
+
+footer.wp-block-template-part > .wp-block-group {
+    padding-top: var(--wp--custom--spacing--footer-vertical);
+    padding-bottom: var(--wp--custom--spacing--footer-vertical);
+}
 
 
-/*
- * No title template
- */
-
-
-
-/* -------------------------------- UTILITIES -------------------------------- */
-
-
-
-
-/* -------------------------------- BACKUP -------------------------------- */
 
