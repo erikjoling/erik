@@ -39,7 +39,6 @@ body {
  */
 
 .wp-site-blocks,
-.wp-site-blocks > .wp-block-group,
 .wp-site-blocks > .wp-block-cover,
 .wp-site-blocks > .wp-block-template-part,
 .wp-site-blocks > .wp-block-template-part > .wp-block-group,
@@ -48,13 +47,22 @@ body {
 .wp-site-blocks > main > .wp-block-group,
 .wp-site-blocks > main > .wp-block-cover,
 .wp-site-blocks > main > .wp-block-post-content,
+/* When everything is wrapped in a cover block */
+.wp-site-blocks > .wp-block-cover > .wp-block-cover__inner-container > .wp-block-template-part,
+.wp-site-blocks > .wp-block-cover > .wp-block-cover__inner-container > .wp-block-template-part > .wp-block-group,
+.wp-site-blocks > .wp-block-cover > .wp-block-cover__inner-container > .wp-block-template-part > .wp-block-cover,
+.wp-site-blocks > .wp-block-cover > .wp-block-cover__inner-container > main,
+.wp-site-blocks > .wp-block-cover > .wp-block-cover__inner-container > main > .wp-block-group,
+.wp-site-blocks > .wp-block-cover > .wp-block-cover__inner-container > main > .wp-block-cover,
+.wp-site-blocks > .wp-block-cover > .wp-block-cover__inner-container > main > .wp-block-post-content,
+/* For the editor */
 body > .is-root-container,
 .edit-post-visual-editor__post-title-wrapper {
     padding-left: var(--wp--custom--spacing--outer-site-horizontal);
     padding-right: var(--wp--custom--spacing--outer-site-horizontal);
 }
 
-.wp-site-blocks > .wp-block-group,
+/* Modify all relevant container blocks in the root */ 
 .wp-site-blocks > .wp-block-cover,
 .wp-site-blocks > .wp-block-template-part,
 .wp-site-blocks > .wp-block-template-part > .wp-block-group,
@@ -63,6 +71,15 @@ body > .is-root-container,
 .wp-site-blocks > main > .wp-block-group,
 .wp-site-blocks > main > .wp-block-cover,
 .wp-site-blocks > main > .wp-block-post-content,
+/* Modify all relevant container blocks in a root cover block */
+.wp-site-blocks > .wp-block-cover > .wp-block-cover__inner-container > .wp-block-template-part,
+.wp-site-blocks > .wp-block-cover > .wp-block-cover__inner-container > .wp-block-template-part > .wp-block-group,
+.wp-site-blocks > .wp-block-cover > .wp-block-cover__inner-container > .wp-block-template-part > .wp-block-cover,
+.wp-site-blocks > .wp-block-cover > .wp-block-cover__inner-container > main,
+.wp-site-blocks > .wp-block-cover > .wp-block-cover__inner-container > main > .wp-block-group,
+.wp-site-blocks > .wp-block-cover > .wp-block-cover__inner-container > main > .wp-block-cover,
+.wp-site-blocks > .wp-block-cover > .wp-block-cover__inner-container > main > .wp-block-post-content,
+/* For the editor */
 body > .is-root-container > .wp-block-template-part {
     margin-left: calc(-1 * var(--wp--custom--spacing--outer-site-horizontal)) !important;
     margin-right: calc(-1 * var(--wp--custom--spacing--outer-site-horizontal)) !important;
@@ -110,6 +127,21 @@ body > .is-root-container > .wp-block-template-part {
 .wp-block-image.alignfull + * {
     margin-block-start: var(--wp--custom--spacing--block-gap-large);
 }
+
+/* ------------------------------ COVER BLOCK IN ROOT ------------------------------ */
+
+.wp-site-blocks > .wp-block-cover {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+/*
+ * Fix rooted cover block custom position issue
+ */
+.wp-site-blocks > .wp-block-cover.has-custom-content-position .wp-block-cover__inner-container {
+    width: 100%;
+}
+
 
 /* ------------------------------ HEADER & NAVIGATION ------------------------------ */
 
