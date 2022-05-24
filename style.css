@@ -39,24 +39,30 @@ body {
  */
 
 .wp-site-blocks,
-.wp-site-blocks > .wp-block-group.has-background,
+.wp-site-blocks > .wp-block-group,
 .wp-site-blocks > .wp-block-cover,
 .wp-site-blocks > .wp-block-template-part,
 .wp-site-blocks > .wp-block-template-part > .wp-block-group,
 .wp-site-blocks > .wp-block-template-part > .wp-block-cover,
-main,
+.wp-site-blocks > main,
+.wp-site-blocks > main > .wp-block-group,
+.wp-site-blocks > main > .wp-block-cover,
+.wp-site-blocks > main > .wp-block-post-content,
 body > .is-root-container,
 .edit-post-visual-editor__post-title-wrapper {
     padding-left: var(--wp--custom--spacing--outer-site-horizontal);
     padding-right: var(--wp--custom--spacing--outer-site-horizontal);
 }
 
-.wp-site-blocks > .wp-block-group.has-background,
+.wp-site-blocks > .wp-block-group,
 .wp-site-blocks > .wp-block-cover,
 .wp-site-blocks > .wp-block-template-part,
 .wp-site-blocks > .wp-block-template-part > .wp-block-group,
 .wp-site-blocks > .wp-block-template-part > .wp-block-cover,
-main,
+.wp-site-blocks > main,
+.wp-site-blocks > main > .wp-block-group,
+.wp-site-blocks > main > .wp-block-cover,
+.wp-site-blocks > main > .wp-block-post-content,
 body > .is-root-container > .wp-block-template-part {
     margin-left: calc(-1 * var(--wp--custom--spacing--outer-site-horizontal)) !important;
     margin-right: calc(-1 * var(--wp--custom--spacing--outer-site-horizontal)) !important;
@@ -68,6 +74,41 @@ body > .is-root-container > .wp-block-template-part {
  */
 .wp-site-blocks > * + * {
     margin-block-start: 0;
+}
+
+/*
+ * Improve inner spacing of certain container blocks (like cover, group, columns)
+ */
+.wp-block-cover,
+.wp-block-group.has-background,
+.wp-block-columns.has-background,
+.wp-block-column.has-background {
+    padding: var(--wp--custom--spacing--block-gap);
+}
+
+/*
+ * Improve vertical spacing of large blocks with media or background
+ */
+.wp-block-group.has-background.alignwide,
+.wp-block-group.has-background.alignfull,
+.wp-block-columns.has-background.alignwide,
+.wp-block-columns.has-background.alignfull,
+.wp-block-cover.alignwide,
+.wp-block-cover.alignfull,
+.wp-block-image.alignwide,
+.wp-block-image.alignfull {
+    margin-block-start: var(--wp--custom--spacing--block-gap-large);
+}
+
+.wp-block-group.has-background.alignwide + *,
+.wp-block-group.has-background.alignfull + *,
+.wp-block-columns.has-background.alignwide + *,
+.wp-block-columns.has-background.alignfull + *,
+.wp-block-cover.alignwide + *,
+.wp-block-cover.alignfull + *,
+.wp-block-image.alignwide + *,
+.wp-block-image.alignfull + * {
+    margin-block-start: var(--wp--custom--spacing--block-gap-large);
 }
 
 /* ------------------------------ HEADER & NAVIGATION ------------------------------ */
