@@ -128,6 +128,28 @@ body > .is-root-container > .wp-block-template-part {
     margin-block-start: var(--wp--custom--spacing--block-gap-large);
 }
 
+/*
+ * Remove and improve some link styles
+ */
+.wp-block-post-terms a,
+.wp-block-post-title a,
+.wp-block-site-title a {
+    text-decoration: none;
+}
+
+.wp-block-navigation a:hover,
+.wp-block-post-terms a:hover,
+.wp-block-post-title a:hover,
+.wp-block-site-title a:hover {
+    text-decoration: underline;
+}
+
+/* Improve title spacing */
+h1.wp-block-query-title,
+h1.wp-block-post-title {
+    margin-block-end: var(--wp--custom--spacing--block-gap-large) !important;
+}
+
 /* ------------------------------ COVER BLOCK IN ROOT ------------------------------ */
 
 .wp-site-blocks > .wp-block-cover {
@@ -190,6 +212,10 @@ footer.wp-block-template-part > .wp-block-group {
     padding-top: var(--wp--custom--spacing--footer-vertical);
     padding-bottom: var(--wp--custom--spacing--footer-vertical);
 }
+
+
+/* ---------------------------------- BLOCKS ---------------------------------- */
+
 
 
 

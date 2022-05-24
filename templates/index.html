@@ -1,24 +1,21 @@
-<!-- wp:cover {"url":"/wp-content/themes/erik/assets/images/writing-calculator-paperwork.jpg","hasParallax":true,"dimRatio":90,"overlayColor":"primary"} -->
-<div class="wp-block-cover has-parallax" style="background-image:url(/wp-content/themes/erik/assets/images/writing-calculator-paperwork.jpg)">
-	<span aria-hidden="true" class="has-primary-background-color has-background-dim-90 wp-block-cover__gradient-background has-background-dim"></span>
-	<div class="wp-block-cover__inner-container">
+<!-- wp:template-part {"slug":"header","tagName":"header"} /-->
 
-		<!-- wp:template-part {"slug":"header","tagName":"header"} /-->
+<!-- wp:group {"tagName":"main"} -->
+<main class="wp-block-group">
 
-		<!-- wp:group {"tagName":"main","align":"wide","layout":{"inherit":false,"contentSize":"100%"}} -->
-		<main class="wp-block-group alignwide">
-
-			<!-- wp:heading {"level":1} -->
-			<h1 class="wp-block-post-title">Blog</h1>
-			<!-- /wp:heading -->
-
-			<!-- wp:template-part {"slug":"loop"} /-->
-				
- 		</main>
-		<!-- /wp:group -->
-
-		<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->
+	<!-- wp:group {"layout":{"inherit":true}} -->
+	<div class="wp-block-group">
+	
+		<!-- wp:heading {"level":1,"className":"wp-block-post-title"} -->
+		<h1 class="wp-block-post-title">Blog</h1>
+		<!-- /wp:heading -->
 
 	</div>
-</div>
-<!-- /wp:cover -->
+	<!-- /wp:group -->
+
+	<!-- wp:template-part {"slug":"loop"} /-->
+		
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->
