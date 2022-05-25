@@ -98,10 +98,10 @@
             "textTransform": false
 		},
 		"border": {
-			"color": false, 
-			"radius": false, 
-			"style": false, 
-			"width": false
+			"color": true, 
+			"radius": true, 
+			"style": true, 
+			"width": true
 		},
 		"layout": {
 			"contentSize": "40rem",
