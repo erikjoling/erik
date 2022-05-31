@@ -106,14 +106,14 @@ body > .is-root-container > .wp-block-template-part {
 /*
  * Improve vertical spacing of large blocks with media or background
  */
-.wp-block-group.has-background.alignwide,
-.wp-block-group.has-background.alignfull,
-.wp-block-columns.has-background.alignwide,
-.wp-block-columns.has-background.alignfull,
-.wp-block-cover.alignwide,
-.wp-block-cover.alignfull,
-.wp-block-image.alignwide,
-.wp-block-image.alignfull {
+.wp-block-group.has-background.alignwide:not(:first-child),
+.wp-block-group.has-background.alignfull:not(:first-child),
+.wp-block-columns.has-background.alignwide:not(:first-child),
+.wp-block-columns.has-background.alignfull:not(:first-child),
+.wp-block-cover.alignwide:not(:first-child),
+.wp-block-cover.alignfull:not(:first-child),
+.wp-block-image.alignwide:not(:first-child),
+.wp-block-image.alignfull:not(:first-child) {
     margin-block-start: var(--wp--custom--spacing--block-gap-large);
 }
 
@@ -133,12 +133,15 @@ body > .is-root-container > .wp-block-template-part {
  */
 .wp-block-post-terms a,
 .wp-block-post-title a,
+/* .wp-block-post-excerpt__more-text a, */
 .wp-block-site-title a {
     text-decoration: none;
+    color: inherit;
 }
 
 .wp-block-navigation a:hover,
 .wp-block-post-terms a:hover,
+/* .wp-block-post-excerpt__more-text a, */
 .wp-block-post-title a:hover,
 .wp-block-site-title a:hover {
     text-decoration: underline;
@@ -168,6 +171,7 @@ h1.wp-block-post-title {
 /* ------------------------------ HEADER & NAVIGATION ------------------------------ */
 
 
+header.wp-block-template-part > .wp-block-cover,
 header.wp-block-template-part > .wp-block-group {
     padding-top: var(--wp--custom--spacing--header-vertical);
     padding-bottom: var(--wp--custom--spacing--header-vertical);
@@ -217,5 +221,37 @@ footer.wp-block-template-part > .wp-block-group {
 /* ---------------------------------- BLOCKS ---------------------------------- */
 
 
+.wp-block-navigation .current-menu-item > a {
+    font-weight: bold;
+}
 
 
+/* --------------------------------- SPECIALS --------------------------------- */
+
+/* On blank canvas template the post-content is directly inside wp-site-blocks */
+.wp-site-blocks > .wp-block-post-content {
+    padding-top: var(--wp--custom--spacing--main-vertical);
+    padding-bottom: var(--wp--custom--spacing--main-vertical);
+}
+
+.wp-block-group.profile {
+    /* border-radius: 6px; */
+    overflow: hidden;
+    /* border: none !important; */
+}
+
+.wp-block-group.profile .wp-block-cover__background,
+.wp-block-group.profile .wp-block-cover__image-background,
+.wp-block-group.profile .wp-block-cover__video-background,
+.wp-block-group.profile .wp-block-cover__gradient-background {
+    /* border-radius: 6px 6px 0 0; */
+}
+
+.wp-block-group.profile .wp-block-cover__inner-container > .wp-block-image,
+.wp-block-group.profile .wp-block-cover__inner-container > .wp-block-group {
+    margin-bottom: -50%;
+}
+
+.wp-block-group.profile .wp-block-cover__inner-container .wp-block-image img {
+    border: 5px solid white;
+}
