@@ -27,6 +27,26 @@ body {
 }
 
 /*
+ * Figure browser reset
+ */
+figure {
+    margin: 0;
+}
+
+/*
+ * Button hover styles.
+ * Necessary until the following issue is resolved in Gutenberg:
+ * https://github.com/WordPress/gutenberg/issues/27075
+ */
+
+.wp-block-search__button:hover,
+.wp-block-file .wp-block-file__button:hover,
+.wp-block-button__link:hover {
+    opacity: 0.8;
+    box-shadow: 0 3px 5px -1px var(--wp--preset--color--secondary),0 1px 3px -1px var(--wp--preset--color--secondary);
+}
+
+/*
  * Alignment styles.
  * These rules are temporary, and should not be relied on or
  * modified too heavily by themes or plugins that build on
