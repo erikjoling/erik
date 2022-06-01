@@ -142,6 +142,9 @@
 					"medium": 1.4,
 					"normal": 1.725
 				}
+			},
+			"form" : {
+				"padding": "0.25rem 0.5rem"
 			}
 		}
 	},
@@ -169,6 +172,9 @@
 				},
 				"typography": {
 					"fontSize": "var(--wp--preset--font-size--medium)"
+				},
+				"spacing": {
+					"padding": "calc(.375em + 2px) calc(0.875em + 2px)"
 				}
 			},
 			"core/cover": {

@@ -43,7 +43,7 @@ figure {
 .wp-block-file .wp-block-file__button:hover,
 .wp-block-button__link:hover {
     opacity: 0.8;
-    box-shadow: 0 3px 5px -1px var(--wp--preset--color--secondary),0 1px 3px -1px var(--wp--preset--color--secondary);
+    box-shadow: 0 3px 5px -1px var(--wp--preset--color--grey),0 1px 3px -1px var(--wp--preset--color--grey);
 }
 
 /*
@@ -254,6 +254,73 @@ footer.wp-block-template-part > .wp-block-group {
     padding-bottom: var(--wp--custom--spacing--main-vertical);
 }
 
+
+/*
+ * Form style
+ * - Contact Form 7
+ */
+.wpcf7 form {
+    --wp--style--block-gap: var(--wp--custom--spacing--block-gap-small);
+}
+
+.wpcf7 form > * + * {
+    margin-block-start: var( --wp--style--block-gap );
+    margin-block-end: 0;
+}
+
+.wpcf7 form input:not([type="submit"]):not([type="radio"]):not([type="checkbox"]),
+.wpcf7 form textarea {
+    padding: 0.5rem 0.5rem;
+    font-size: var(--wp--preset--font-size--medium);
+    font-family: var(--wp--preset--font-family--body-font);
+    border-radius: var(--wp--custom--border--radius);
+    border: 2px solid var(--wp--preset--color--grey);
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.wpcf7 form input:not([type="submit"]):not([type="radio"]):not([type="checkbox"]):focus-visible,
+.wpcf7 form textarea:focus-visible {
+    outline: 2px solid var(--wp--preset--color--grey);
+    border-color: var(--wp--preset--color--primary);
+}
+
+/* Reset submit style. Note: we added wp-block-button__link class to the submit button */ 
+.wpcf7 form input[type="submit"] {
+    border: none;
+    line-height: var(--wp--custom--typography--line-height--normal);
+}
+
+.wpcf7 form input[type="checkbox"], 
+.wpcf7 form input[type="radio"] {
+    margin: 0 0.5em 0 0;
+    /* transform: scale(2); */
+/*     width: 1.5em;
+    height: 1.5em; */
+    accent-color: var(--wp--preset--color--primary);
+    /* border-color: var(--wp--preset--color--grey); */
+
+    width: 1.5em;
+    height: 1.5em;
+    /* border: 0.15em solid var(--wp--preset--color--grey); */
+    border-radius: 0.15em;
+    transform: translateY(0.125em);
+}
+
+.wpcf7 form .wpcf7-list-item:only-child {
+    margin-left: 0;
+}
+
+.wpcf7 form .wpcf7-response-output {
+    margin: 0;
+    padding: var(--wp--custom--spacing--block-gap-small);
+}
+
+
+
+/*
+ * Profile pattern
+ */
 .wp-block-group.profile {
     /* border-radius: 6px; */
     overflow: hidden;
