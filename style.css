@@ -245,8 +245,16 @@ h1.wp-block-post-title {
     overflow: hidden;
 }
 
+
 /* --------------------------------- SPECIALS --------------------------------- */
 
+/*
+ * Tilde before site title
+ */
+
+.wp-block-site-title:before {
+    content: '~ ';
+}
 
 /*
  * Site navigation
