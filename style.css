@@ -33,18 +33,8 @@ figure {
     margin: 0;
 }
 
-/*
- * Button hover styles.
- * Necessary until the following issue is resolved in Gutenberg:
- * https://github.com/WordPress/gutenberg/issues/27075
- */
 
-.wp-block-search__button:hover,
-.wp-block-file .wp-block-file__button:hover,
-.wp-block-button__link:hover {
-    opacity: 0.8;
-    box-shadow: 0 3px 5px -1px var(--wp--preset--color--grey),0 1px 3px -1px var(--wp--preset--color--grey);
-}
+/* ----------------------------- SITE LAYOUT ----------------------------- */
 
 /*
  * Alignment styles.
@@ -107,25 +97,59 @@ body > .is-root-container > .wp-block-template-part {
 }
 
 /*
- * Remove the margin-top between site-blocks
+ * Vertical space for header, main and footer
  */
+
+header.wp-block-template-part > .wp-block-cover,
+header.wp-block-template-part > .wp-block-group {
+    padding-top: var(--wp--custom--spacing--header-vertical);
+    padding-bottom: var(--wp--custom--spacing--header-vertical);
+}
+
+
+main.wp-block-group {
+    padding-top: var(--wp--custom--spacing--main-vertical);
+    padding-bottom: var(--wp--custom--spacing--main-vertical);
+}
+
+/* On blank canvas template the post-content is directly inside wp-site-blocks */
+.wp-site-blocks > .wp-block-post-content {
+    padding-top: var(--wp--custom--spacing--main-vertical);
+    padding-bottom: var(--wp--custom--spacing--main-vertical);
+}
+
+footer.wp-block-template-part > .wp-block-group,
+footer.wp-block-template-part > .wp-block-cover {
+    padding-top: var(--wp--custom--spacing--footer-vertical);
+    padding-bottom: var(--wp--custom--spacing--footer-vertical);
+}
+
+/* Remove the margin-top between site sections */
 .wp-site-blocks > * + * {
     margin-block-start: 0;
 }
 
 /*
- * Improve inner spacing of certain container blocks (like cover, group, columns)
+ * Additions for a cover block in the root
  */
-.wp-block-cover,
-.wp-block-group.has-background,
-.wp-block-columns.has-background,
-.wp-block-column.has-background {
-    padding: var(--wp--custom--spacing--block-gap);
+
+.wp-site-blocks > .wp-block-cover {
+    padding-top: 0;
+    padding-bottom: 0;
 }
+
+/* Fix custom position issue */
+.wp-site-blocks > .wp-block-cover.has-custom-content-position .wp-block-cover__inner-container {
+    width: 100%;
+}
+
+
+
+/* ------------------------------- SPACING ------------------------------- */
 
 /*
  * Improve vertical spacing of large blocks with media or background
- */
+ */ 
 .wp-block-group.has-background.alignwide:not(:first-child),
 .wp-block-group.has-background.alignfull:not(:first-child),
 .wp-block-columns.has-background.alignwide:not(:first-child),
@@ -148,24 +172,14 @@ body > .is-root-container > .wp-block-template-part {
     margin-block-start: var(--wp--custom--spacing--block-gap-large);
 }
 
-/*
- * Remove and improve some link styles
- */
-.wp-block-post-terms a,
-.wp-block-post-title a,
-/* .wp-block-post-excerpt__more-text a, */
-.wp-block-site-title a {
-    text-decoration: none;
-    color: inherit;
+/* Improve inner spacing of certain container blocks (like cover, group, columns) */
+.wp-block-cover,
+.wp-block-group.has-background,
+.wp-block-columns.has-background,
+.wp-block-column.has-background {
+    padding: var(--wp--custom--spacing--block-gap);
 }
 
-.wp-block-navigation a:hover,
-.wp-block-post-terms a:hover,
-/* .wp-block-post-excerpt__more-text a, */
-.wp-block-post-title a:hover,
-.wp-block-site-title a:hover {
-    text-decoration: underline;
-}
 
 /* Improve title spacing */
 h1.wp-block-query-title,
@@ -173,36 +187,61 @@ h1.wp-block-post-title {
     margin-block-end: var(--wp--custom--spacing--block-gap-large) !important;
 }
 
-/* ------------------------------ COVER BLOCK IN ROOT ------------------------------ */
 
-.wp-site-blocks > .wp-block-cover {
-    padding-top: 0;
-    padding-bottom: 0;
-}
+/* ---------------------------- LINKS & BUTTONS ---------------------------- */
 
 /*
- * Fix rooted cover block custom position issue
+ * Remove and improve some link styles
  */
-.wp-site-blocks > .wp-block-cover.has-custom-content-position .wp-block-cover__inner-container {
-    width: 100%;
+.wp-block-post-terms a,
+.wp-block-post-title a,
+.wp-block-site-title a {
+    text-decoration: none;
+    color: inherit;
 }
 
-
-/* ------------------------------ HEADER & NAVIGATION ------------------------------ */
-
-
-header.wp-block-template-part > .wp-block-cover,
-header.wp-block-template-part > .wp-block-group {
-    padding-top: var(--wp--custom--spacing--header-vertical);
-    padding-bottom: var(--wp--custom--spacing--header-vertical);
+.wp-block-navigation a:hover,
+.wp-block-post-terms a:hover,
+.wp-block-post-title a:hover,
+.wp-block-site-title a:hover {
+    text-decoration: underline;
 }
 
 /*
+ * Button hover styles.
+ * Necessary until the following issue is resolved in Gutenberg:
+ * https://github.com/WordPress/gutenberg/issues/27075
+ */
+
+.wp-block-search__button:hover,
+.wp-block-file .wp-block-file__button:hover,
+.wp-block-button__link:hover {
+    opacity: 0.8;
+    box-shadow: 0 3px 5px -1px var(--wp--preset--color--grey),0 1px 3px -1px var(--wp--preset--color--grey);
+}
+
+
+/* ---------------------------------- BLOCKS --------------------------------- */
+
+/* Set default gap */
+.wp-block-gallery {
+    --wp--style--gallery-gap-default: 4px;
+}
+
+/* Fix image caption pointy corners */
+.wp-block-image {
+    overflow: hidden;
+}
+
+/* --------------------------------- SPECIALS --------------------------------- */
+
+/*
+ * Site navigation
+ *
  * Correct the spacing of the (Responsive) Navigation Block
- * We also use some javascript (see theme.js)
  */
 
-header.wp-block-template-part .wp-block-navigation__responsive-container.is-menu-open {
+.wp-block-navigation__responsive-container.is-menu-open {
     padding-left: var(--wp--custom--spacing--outer-site-horizontal);
     padding-right: var(--wp--custom--spacing--outer-site-horizontal);
     padding-top: var(--wp--custom--spacing--header-vertical);
@@ -210,11 +249,11 @@ header.wp-block-template-part .wp-block-navigation__responsive-container.is-menu
     text-align: right;
 }
 
-header.wp-block-template-part .wp-block-navigation__responsive-container-close {
+.wp-block-navigation__responsive-container-close {
     position: relative;
 }
 
-header.wp-block-template-part .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content {
+.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content {
     padding-top: var(--wp--custom--spacing--header-vertical);
 }
 
@@ -222,36 +261,8 @@ header.wp-block-template-part .wp-block-navigation__responsive-container.is-menu
 /* @media (max-width: 480px) {} */
 
 
-/* ----------------------------------- MAIN ----------------------------------- */
-
-main.wp-block-group {
-    padding-top: var(--wp--custom--spacing--main-vertical);
-    padding-bottom: var(--wp--custom--spacing--main-vertical);
-}
-
-
-/* ---------------------------------- FOOTER ---------------------------------- */
-
-footer.wp-block-template-part > .wp-block-group {
-    padding-top: var(--wp--custom--spacing--footer-vertical);
-    padding-bottom: var(--wp--custom--spacing--footer-vertical);
-}
-
-
-/* ---------------------------------- BLOCKS ---------------------------------- */
-
-
 .wp-block-navigation .current-menu-item > a {
     font-weight: bold;
-}
-
-
-/* --------------------------------- SPECIALS --------------------------------- */
-
-/* On blank canvas template the post-content is directly inside wp-site-blocks */
-.wp-site-blocks > .wp-block-post-content {
-    padding-top: var(--wp--custom--spacing--main-vertical);
-    padding-bottom: var(--wp--custom--spacing--main-vertical);
 }
 
 
@@ -259,6 +270,7 @@ footer.wp-block-template-part > .wp-block-group {
  * Form style
  * - Contact Form 7
  */
+
 .wpcf7 form {
     --wp--style--block-gap: var(--wp--custom--spacing--block-gap-small);
 }
@@ -294,15 +306,10 @@ footer.wp-block-template-part > .wp-block-group {
 .wpcf7 form input[type="checkbox"], 
 .wpcf7 form input[type="radio"] {
     margin: 0 0.5em 0 0;
-    /* transform: scale(2); */
-/*     width: 1.5em;
-    height: 1.5em; */
     accent-color: var(--wp--preset--color--primary);
-    /* border-color: var(--wp--preset--color--grey); */
 
     width: 1.5em;
     height: 1.5em;
-    /* border: 0.15em solid var(--wp--preset--color--grey); */
     border-radius: 0.15em;
     transform: translateY(0.125em);
 }
@@ -314,31 +321,4 @@ footer.wp-block-template-part > .wp-block-group {
 .wpcf7 form .wpcf7-response-output {
     margin: 0;
     padding: var(--wp--custom--spacing--block-gap-small);
-}
-
-
-
-/*
- * Profile pattern
- */
-.wp-block-group.profile {
-    /* border-radius: 6px; */
-    overflow: hidden;
-    /* border: none !important; */
-}
-
-.wp-block-group.profile .wp-block-cover__background,
-.wp-block-group.profile .wp-block-cover__image-background,
-.wp-block-group.profile .wp-block-cover__video-background,
-.wp-block-group.profile .wp-block-cover__gradient-background {
-    /* border-radius: 6px 6px 0 0; */
-}
-
-.wp-block-group.profile .wp-block-cover__inner-container > .wp-block-image,
-.wp-block-group.profile .wp-block-cover__inner-container > .wp-block-group {
-    margin-bottom: -50%;
-}
-
-.wp-block-group.profile .wp-block-cover__inner-container .wp-block-image img {
-    border: 5px solid white;
 }
