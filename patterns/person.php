@@ -1,5 +1,12 @@
-<!-- wp:columns {"align":"wide","backgroundColor":"secondary"} -->
-<div class="wp-block-columns alignwide has-secondary-background-color has-background">
+<?php
+/**
+ * Title: Person
+ * Slug: erik/Person
+ * Categories: featured
+ */
+?>
+<!-- wp:columns {"align":"wide","backgroundColor":"light-grey"} -->
+<div class="wp-block-columns alignwide has-light-grey-background-color has-background">
 
 	<!-- wp:column {"width":"25%"} -->
 	<div class="wp-block-column" style="flex-basis:25%">

@@ -29,6 +29,7 @@
 			]
 		}
 	],
+	"patterns": [ "short-text-surrounded-by-round-images", "partner-logos" ],
 	"settings": {
 		"color": {
 			"defaultGradients": false,

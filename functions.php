@@ -93,30 +93,75 @@ endif;
 
 add_action( 'wp_enqueue_scripts', 'erik_scripts' );
 
+if ( ! function_exists( 'erik_register_block_patterns' ) ) :
 
-/**
- * Add Custom CSS to Admin Menu
- */
-function erik_add_custom_css_to_admin_menu() {
+	/**
+	 * Registers block patterns and categories.
+	 * 
+	 * @since Erik 1.0
+	 *
+	 * @return void
+	 */
+	function erik_register_block_patterns() {
 
-    $link = 'customize.php?autofocus[section]=custom_css';    
+		remove_theme_support('core-block-patterns');
 
-    /**
-     * @link https://developer.wordpress.org/reference/functions/add_submenu_page/
-     */
-    add_submenu_page( 
-        'themes.php',
-        'Custom CSS',
-        'Custom CSS',
-        'manage_options',
-        $link,
-        '', 
-        null 
-    );
-}
+		$block_pattern_categories = array(
+			'erik' => array( 'label' => __( 'Erik', 'erik' ) ),
+		);
+
+		/**
+		 * Filters the theme block pattern categories.
+		 *
+		 * @param array[] $block_pattern_categories {
+		 *     An associative array of block pattern categories, keyed by category name.
+		 *
+		 *     @type array[] $properties {
+		 *         An array of block category properties.
+		 *
+		 *         @type string $label A human-readable label for the pattern category.
+		 *     }
+		 * }
+		 */
+		$block_pattern_categories = apply_filters( 'erik_block_pattern_categories', $block_pattern_categories );
+
+		// foreach ( $block_pattern_categories as $name => $properties ) {
+		// 	if ( ! WP_Block_Pattern_Categories_Registry::get_instance()->is_registered( $name ) ) {
+		// 		register_block_pattern_category( $name, $properties );
+		// 	}
+		// }
+	}
+
+endif;
+
+add_action( 'init', 'erik_register_block_patterns', 9 );
+
+
+if ( ! function_exists( 'erik_add_custom_css_to_admin_menu' ) ) :
+
+	/**
+	 * Add Custom CSS to Admin Menu
+	 */
+	function erik_add_custom_css_to_admin_menu() {
+
+	    $link = 'customize.php?autofocus[section]=custom_css';    
+
+	    /**
+	     * @link https://developer.wordpress.org/reference/functions/add_submenu_page/
+	     */
+	    add_submenu_page( 
+	        'themes.php',
+	        'Custom CSS',
+	        'Custom CSS',
+	        'manage_options',
+	        $link,
+	        '', 
+	        null 
+	    );
+	}
+
+endif;
 
 // Register Custom CSS for admin menu
 add_action( 'admin_menu', 'erik_add_custom_css_to_admin_menu', 11 );
 
-// Add block patterns
-require get_template_directory() . '/inc/block-patterns.php';
