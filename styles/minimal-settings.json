@@ -1,0 +1,45 @@
+{
+	"version": 2,
+	"title": "Minimal Settings",
+	"settings": {
+		"appearanceTools": null,
+		"color": {
+			"background": true,
+			"text": true,
+			"link": false,
+			"defaultGradients": false,
+			"defaultDuotone": false,
+			"defaultPalette": false,
+			"palette": [
+				{ "name": "Black",   "slug": "black",   "color": "#000000" },
+				{ "name": "White",   "slug": "white",   "color": "#ffffff" },
+				{ "name": "Grey",    "slug": "grey",    "color": "#CCCCCC" },
+				{ "name": "Primary", "slug": "primary", "color": "#FF7386" }
+			],
+			"custom": false,
+			"customGradient": false,
+			"customDuotone": false
+		},
+		"typography": {
+			"customFontSize": false,
+            "lineHeight": false,
+            "fontStyle": false,
+			"fontWeight": false,
+			"dropCap": false,
+            "letterSpacing": false,
+            "textDecoration": false,
+            "textTransform": false
+		},
+		"border": {
+			"color": false, 
+			"radius": false, 
+			"style": false, 
+			"width": false
+		},
+		"spacing": {
+			"blockGap": false,
+			"margin": false,
+			"padding": false
+		}
+	}
+}

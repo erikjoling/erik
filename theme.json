@@ -30,26 +30,18 @@
 		}
 	],
 	"settings": {
+		"appearanceTools": true,
 		"color": {
-			"defaultGradients": false,
-			"defaultDuotone": false,
-			"defaultPalette": false,
-			"background": true,
-			"text": true,
-			"link": true,
 			"palette": [
-				{ "name": "Black", "slug": "black", "color": "#000000" },
-				{ "name": "White", "slug": "white", "color": "#ffffff" },
-				{ "name": "Grey", "slug": "grey", "color": "#CCCCCC" },
-				{ "name": "Primary", 	"slug": "primary",	  "color": "#087386" }
+				{ "name": "Black",   "slug": "black",   "color": "#000000" },
+				{ "name": "White",   "slug": "white",   "color": "#ffffff" },
+				{ "name": "Grey",    "slug": "grey",    "color": "#CCCCCC" },
+				{ "name": "Primary", "slug": "primary", "color": "#087386" }
 			],
-			"custom": true,
 			"gradients": [],
-			"customGradient": true,
 			"duotone": [
 				{ "name": "Black and white", "slug": "black-and-white", "colors": [ "#000000", "#ffffff" ] }
-			],
-			"customDuotone": false
+			]
 		},
 		"typography": {
 			"fontFamilies": [
@@ -86,30 +78,14 @@
 				{ "name": "Large",    "slug": "large",    "size": "clamp(1.25rem, 2vw, 1.625rem)" },
 				{ "name": "X-large",  "slug": "x-large",  "size": "clamp(1.5rem, 3vw, 2.375rem)" },
 				{ "name": "XX Large", "slug": "xx-large", "size": "clamp(1.75rem, 3vw, 4rem)" }
-			],
-			"customFontSize": false,
-            "lineHeight": false,
-            "fontStyle": true,
-			"fontWeight": true,
-			"dropCap": false,
-            "letterSpacing": false,
-            "textDecoration": false,
-            "textTransform": false
+			]
 		},
-		"border": {
-			"color": true, 
-			"radius": true, 
-			"style": true, 
-			"width": true
-		},
+		"border": {},
 		"layout": {
 			"contentSize": "40rem",
 			"wideSize": "60rem"
 		},
 		"spacing": {
-			"blockGap": true,
-			"margin": true,
-			"padding": true,
 			"units": [ "%",	"px", "em", "rem", "vh", "vw" ]
 		},
 		"custom": {
