@@ -38,10 +38,10 @@
 			"text": true,
 			"link": true,
 			"palette": [
-				{ "name": "Black", "slug": "black", "color": "#000000" },
-				{ "name": "White", "slug": "white", "color": "#ffffff" },
-				{ "name": "Grey", "slug": "grey", "color": "#CCCCCC" },
-				{ "name": "Primary", 	"slug": "primary",	  "color": "#087386" }
+				{ "name": "Black",   "slug": "black",   "color": "#000000" },
+				{ "name": "White",   "slug": "white",   "color": "#ffffff" },
+				{ "name": "Grey",    "slug": "grey",    "color": "#CCCCCC" },
+				{ "name": "Primary", "slug": "primary", "color": "#087386" }
 			],
 			"custom": true,
 			"gradients": [],
