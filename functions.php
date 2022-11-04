@@ -165,3 +165,33 @@ endif;
 // Register Custom CSS for admin menu
 add_action( 'admin_menu', 'erik_add_custom_css_to_admin_menu', 11 );
 
+
+/**
+ * Hack query loop to show posts and fotogalerij in some cases
+ * 
+ * Note: works when 'offset' is set to '9' in the query block
+ */
+if ( ! function_exists( 'erik_add_post_types_to_query_block' ) ) :
+	
+	function erik_add_post_types_to_query_block( $query ) {
+
+		if ( ! is_admin() ) {
+
+			if ( isset($query->query['offset']) && $query->query['offset'] == '9' ) {
+
+				// setup post_types
+		        $post_types = ['post'];
+
+		        if ( post_type_exists( 'fotogalerij' ) ) {
+		        	$post_types[] = 'fotogalerij';
+		        }
+
+				$query->set( 'post_type', $post_types );
+				$query->set( 'offset', 0 );
+			}
+		}
+	}
+
+endif;
+
+add_action( 'pre_get_posts', 'erik_add_post_types_to_query_block' );
