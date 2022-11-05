@@ -277,14 +277,16 @@ function erik_query_vars_for_update_list( $query, $block, $page ) {
 function erik_pre_render_update_list( $pre_render, $parsed_block, $parent_block ) {
 
 	if ( 
-		// Only gallery blocks
+		// Only query blocks
 		$parsed_block['blockName'] == 'core/query' 
 
-		// Only products style
+		// Only query-update-list
 		&& isset($parsed_block['attrs']['className']) && strpos($parsed_block['attrs']['className'], 'query-update-list') !== false
 	) {
 
 		add_filter( 'query_loop_block_query_vars', 'erik_query_vars_for_update_list', 10, 3 );
+
+		add_filter( 'render_block_core/post-date', 'erik_render_post_type_after_post_date', 10, 2 );
 		
 	}
 
@@ -296,12 +298,66 @@ add_filter( 'pre_render_block', 'erik_pre_render_update_list', 10, 3 );
 
 
 /*
- * 
+ * Remove filter
  */
 add_filter( "render_block_core/query", function($block_content, $parsed_block) {
 
-	remove_filter( 'query_loop_block_query_vars', 'erik_query_vars_for_update_list' );
+	if ( 
+		// Only query blocks
+		$parsed_block['blockName'] == 'core/query' 
+
+		// Only query-update-list
+		&& isset($parsed_block['attrs']['className']) && strpos($parsed_block['attrs']['className'], 'query-update-list') !== false
+	) {
+
+		remove_filter( 'query_loop_block_query_vars', 'erik_query_vars_for_update_list' );
+
+		
+	}
 
 	return $block_content;
 
 }, 10, 2 );
+
+
+
+add_filter( 'render_block_data', function( $parsed_block, $source_block, $parent_block ) {
+
+	if ( 
+		// Only query blocks
+		$parsed_block['blockName'] == 'core/query' 
+
+		// Only query-update-list
+		&& isset($parsed_block['attrs']['className']) && strpos($parsed_block['attrs']['className'], 'query-update-list') !== false
+	) {
+
+		// error_log($block_content);
+		// error_log(print_r($parsed_block, true));
+	}
+
+	return $parsed_block;
+
+}, 10, 3 );
+
+
+function erik_render_post_type_after_post_date($block_content, $parsed_block) {
+
+	$post_type = get_post_type();
+	$post_type_object = get_post_type_object($post_type);
+
+	// error_log(print_r($post_type_object, true));
+	// error_log( ucfirst($post_type_object->labels->singular_name));
+
+	$post_type_block = sprintf(
+		'<div class="wp-block-post-type %s">%s</div>',
+		"wp-block-post-type--$post_type",
+		strtolower($post_type_object->labels->singular_name)
+	);
+
+	$block_content .= $post_type_block;
+
+
+	return $block_content;
+
+}
+
