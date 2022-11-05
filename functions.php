@@ -134,7 +134,7 @@ if ( ! function_exists( 'erik_register_block_patterns' ) ) :
 
 endif;
 
-add_action( 'init', 'erik_register_block_patterns', 9 );
+// add_action( 'init', 'erik_register_block_patterns', 9 );
 
 
 if ( ! function_exists( 'erik_add_custom_css_to_admin_menu' ) ) :
@@ -165,6 +165,40 @@ endif;
 // Register Custom CSS for admin menu
 add_action( 'admin_menu', 'erik_add_custom_css_to_admin_menu', 11 );
 
+if ( ! function_exists( 'erik_add_styles_and_scripts_to_editor' ) ) :
+
+/**
+ * Add scripts and styles (editor)
+ */
+function erik_add_styles_and_scripts_to_editor() {
+
+	// Register theme script.
+	$theme_version = wp_get_theme()->get( 'Version' );
+
+	$version_string = is_string( $theme_version ) ? $theme_version : false;
+	wp_register_script(
+		'erik-block-editor-script',
+		get_template_directory_uri() . '/assets/js/block-editor.js',
+		[ 
+			'wp-blocks', 
+			'wp-i18n', 
+			'wp-data', 
+			'wp-dom-ready', 
+			'wp-edit-post', 
+			'wp-hooks'
+		],
+		$version_string,
+		true
+	);
+
+	// Enqueue the script.
+	wp_enqueue_script( 'erik-block-editor-script' );
+}
+
+endif;
+
+// Enqueue scripts and styles to the editor
+add_action( 'enqueue_block_editor_assets', 'erik_add_styles_and_scripts_to_editor' );
 
 /**
  * Hack query loop to show posts and fotogalerij in some cases
@@ -194,4 +228,80 @@ if ( ! function_exists( 'erik_add_post_types_to_query_block' ) ) :
 
 endif;
 
-add_action( 'pre_get_posts', 'erik_add_post_types_to_query_block' );
+// add_action( 'pre_get_posts', 'erik_add_post_types_to_query_block' );
+
+// /**
+//  * Create the markup for HTML Splide carousel
+//  */
+// function erik_change_query_updates( $pre_render, $parsed_block, $parent_block ) {
+
+// 	if ( 
+// 		// Only gallery blocks
+// 		$parsed_block['blockName'] == 'core/query' 
+
+// 		// Only products style
+// 		&& isset($parsed_block['attrs']['className']) && strpos($parsed_block['attrs']['className'], 'query-updates') !== false
+// 	) {
+
+		
+// 	}
+
+// 	return $output;
+// }
+
+// // Create the markup for HTML Splide carousel
+// add_filter( 'pre_render_block', 'erik_change_query_updates', 10, 3 );
+
+
+/**
+ * Filter query vars before it is rendered on frontend
+ */
+function erik_query_vars_for_update_list( $query, $block, $page ) {
+
+	// setup post_types
+    $post_types = ['post'];
+
+    if ( post_type_exists( 'fotogalerij' ) ) {
+    	$post_types[] = 'fotogalerij';
+    }
+
+	$query['post_type'] = $post_types;
+	$query['offset'] = 0;
+
+	return $query;
+}
+
+/**
+ * 
+ */
+function erik_pre_render_update_list( $pre_render, $parsed_block, $parent_block ) {
+
+	if ( 
+		// Only gallery blocks
+		$parsed_block['blockName'] == 'core/query' 
+
+		// Only products style
+		&& isset($parsed_block['attrs']['className']) && strpos($parsed_block['attrs']['className'], 'query-update-list') !== false
+	) {
+
+		add_filter( 'query_loop_block_query_vars', 'erik_query_vars_for_update_list', 10, 3 );
+		
+	}
+
+	return $pre_render;
+}
+
+add_filter( 'pre_render_block', 'erik_pre_render_update_list', 10, 3 );
+
+
+
+/*
+ * 
+ */
+add_filter( "render_block_core/query", function($block_content, $parsed_block) {
+
+	remove_filter( 'query_loop_block_query_vars', 'erik_query_vars_for_update_list' );
+
+	return $block_content;
+
+}, 10, 2 );

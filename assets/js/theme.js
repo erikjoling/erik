@@ -4,7 +4,6 @@
 
 // ADVICE: don't use javascript for this since it also must be working in the editor and that makes things hard... Just use custom CSS or whatever
 
-
 // ADD NAVIGATION STATE
 
 // // Get header navigation (which is our alignment anchor)
