@@ -249,6 +249,11 @@ main.wp-block-group > * + * {
     overflow: hidden;
 }
 
+/* Button block: improve outline padding */
+.wp-block-button.is-style-outline > .wp-block-button__link {
+  padding: 0.25em 0.75em;
+}
+
 
 /* --------------------------------- SPECIALS --------------------------------- */
 
@@ -381,4 +386,20 @@ main.wp-block-group > * + * {
 
 .wp-block-post-terms.taxonomy-post_tag .wp-block-post-terms__separator {
     display: none;
+}
+
+
+/*
+ * Query Loop: Update List
+ */
+
+.query-update-list .wp-block-post-title {
+    width: 100%;
+}
+
+@media (min-width:782px) {
+    .query-update-list .wp-block-post-title {
+        width: auto;
+        max-width: 480px;
+    }
 }

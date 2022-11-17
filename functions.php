@@ -354,7 +354,7 @@ function erik_render_post_type_after_post_date($block_content, $parsed_block) {
 		strtolower($post_type_object->labels->singular_name)
 	);
 
-	$block_content .= $post_type_block;
+	$block_content = $post_type_block . $block_content;
 
 
 	return $block_content;
