@@ -200,33 +200,33 @@ endif;
 // Enqueue scripts and styles to the editor
 add_action( 'enqueue_block_editor_assets', 'erik_add_styles_and_scripts_to_editor' );
 
-/**
- * Hack query loop to show posts and fotogalerij in some cases
- * 
- * Note: works when 'offset' is set to '9' in the query block
- */
-if ( ! function_exists( 'erik_add_post_types_to_query_block' ) ) :
+// /**
+//  * Hack query loop to show posts and fotogalerij in some cases
+//  * 
+//  * Note: works when 'offset' is set to '9' in the query block
+//  */
+// if ( ! function_exists( 'erik_add_post_types_to_query_block' ) ) :
 	
-	function erik_add_post_types_to_query_block( $query ) {
+// 	function erik_add_post_types_to_query_block( $query ) {
 
-		if ( ! is_admin() ) {
+// 		if ( ! is_admin() ) {
 
-			if ( isset($query->query['offset']) && $query->query['offset'] == '9' ) {
+// 			if ( isset($query->query['offset']) && $query->query['offset'] == '9' ) {
 
-				// setup post_types
-		        $post_types = ['post'];
+// 				// setup post_types
+// 		        $post_types = ['post'];
 
-		        if ( post_type_exists( 'fotogalerij' ) ) {
-		        	$post_types[] = 'fotogalerij';
-		        }
+// 		        if ( post_type_exists( 'fotogalerij' ) ) {
+// 		        	$post_types[] = 'fotogalerij';
+// 		        }
 
-				$query->set( 'post_type', $post_types );
-				$query->set( 'offset', 0 );
-			}
-		}
-	}
+// 				$query->set( 'post_type', $post_types );
+// 				$query->set( 'offset', 0 );
+// 			}
+// 		}
+// 	}
 
-endif;
+// endif;
 
 // add_action( 'pre_get_posts', 'erik_add_post_types_to_query_block' );
 
@@ -263,6 +263,10 @@ function erik_query_vars_for_update_list( $query, $block, $page ) {
 
     if ( post_type_exists( 'fotogalerij' ) ) {
     	$post_types[] = 'fotogalerij';
+    }
+
+    if ( post_type_exists( 'newsletter' ) ) {
+    	$post_types[] = 'newsletter';
     }
 
 	$query['post_type'] = $post_types;
