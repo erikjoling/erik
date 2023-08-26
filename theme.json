@@ -39,18 +39,18 @@
 			"text": true,
 			"link": true,
 			"palette": [
-				{ "name": "Primary",    "slug": "primary",    "color": "#087386" },
-				{ "name": "Black", 	    "slug": "black", 	  "color": "#2A2A2A" },
+				{ "name": "Primary",    "slug": "primary",    "color": "#19a484" },
+				{ "name": "Black", 	    "slug": "black", 	  "color": "#37342b" },
 				{ "name": "Dark Grey",  "slug": "dark-grey",  "color": "#7F7F7F" },
 				{ "name": "Grey", 	    "slug": "grey", 	  "color": "#CCCCCC" },
-				{ "name": "Light Grey", "slug": "light-grey", "color": "#F0F0F0" },
-				{ "name": "White", 	    "slug": "white", 	  "color": "#FFFFFF" }
+				{ "name": "Light Grey", "slug": "light-grey", "color": "#f8f4ec" },
+				{ "name": "White", 	    "slug": "white", 	  "color": "#fffdf6" }
 			],
 			"custom": true,
 			"gradients": [],
 			"customGradient": true,
 			"duotone": [
-				{ "name": "Black and white", "slug": "black-and-white", "colors": [ "#2A2A2A", "#ffffff" ] }
+				{ "name": "Black and white", "slug": "black-and-white", "colors": [ "#37342b", "#fffdf6" ] }
 			],
 			"customDuotone": false
 		},
@@ -78,10 +78,10 @@
 			],
 			"fontSizes": [
 				{ "name": "Small",    "slug": "small",    "size": "1rem" },
-				{ "name": "Medium",   "slug": "medium",   "size": "clamp(1rem, 2vw, 1.125rem)" },
-				{ "name": "Large",    "slug": "large",    "size": "clamp(1.25rem, 2vw, 1.625rem)" },
-				{ "name": "X-large",  "slug": "x-large",  "size": "clamp(1.5rem, 3vw, 2.375rem)" },
-				{ "name": "XX Large", "slug": "xx-large", "size": "clamp(1.75rem, 3vw, 4rem)" }
+				{ "name": "Medium",   "slug": "medium",   "size": "clamp(1rem, 2vw, 1.25rem)" },
+				{ "name": "Large",    "slug": "large",    "size": "clamp(1.25rem, 3vw, 1.75rem)" },
+				{ "name": "X-large",  "slug": "x-large",  "size": "clamp(1.5rem, 4vw, 2.5rem)" },
+				{ "name": "XX Large", "slug": "xx-large", "size": "clamp(1.75rem, 4vw, 4rem)" }
 			],
 			"customFontSize": false,
             "lineHeight": false,
@@ -175,7 +175,7 @@
 			},
 			"core/cover": {
 				"border": {
-					"radius": "var(--wp--custom--border--radius)"
+					"radius": "0"
 				}
 			},
 			"core/image": {
